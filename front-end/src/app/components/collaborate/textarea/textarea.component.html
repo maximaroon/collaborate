@@ -1,0 +1,22 @@
+<mat-form-field style="width: 100%">
+    <mat-label>{{ label }}</mat-label>
+    <textarea
+        matInput
+        [placeholder]="placeholder"
+        rows="10"
+        [value]="value"
+        [disabled]="lock && lock.owner !== username"
+        (focus)="handleFocus()"
+        (blur)="handleBlur()"
+        (keyup)="handleInterimUpdate($event)"
+    ></textarea>
+</mat-form-field>
+
+@if (lock) {
+    <div style="color: gray">
+        <mat-icon style="font-size: large; line-height: 32px">lock</mat-icon>
+        <small
+            >Locked by {{ lock.owner === username ? "You" : lock.owner }}</small
+        >
+    </div>
+}

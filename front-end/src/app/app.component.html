@@ -1,0 +1,20 @@
+<main class="main">
+    <mat-toolbar>
+        <div style="display: flex; flex-direction: row; gap: 8px">
+            <img src="/images/logo.png" alt="app logo" width="32" height="32" />
+            <span>Socket playground</span>
+        </div>
+    </mat-toolbar>
+    <mat-drawer-container style="height: calc(100vh - 64px)">
+        <mat-drawer
+            mode="side"
+            opened
+            style="border: 1px solid lightgray; border-left: none"
+        >
+            <app-navigation-menu />
+        </mat-drawer>
+        <mat-drawer-content style="padding: 0 24px">
+            <router-outlet />
+        </mat-drawer-content>
+    </mat-drawer-container>
+</main>

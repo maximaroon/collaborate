@@ -1,0 +1,6 @@
+.DS_Store
+
+.angular/
+node_modules/
+[bB]in/
+[oO]bj/

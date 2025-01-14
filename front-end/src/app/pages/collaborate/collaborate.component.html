@@ -1,0 +1,70 @@
+<div style="display: flex; flex-direction: column; gap: 4px">
+    <h1>Work together</h1>
+    <p>
+        Configure your 'username' and open a second page with another
+        'username'. You should see each others changes overtime.
+    </p>
+
+    <form [formGroup]="profileForm" (ngSubmit)="updateForm()">
+        <div style="display: flex; flex-direction: row; gap: 6px">
+            <mat-form-field class="flex">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username" />
+            </mat-form-field>
+            <mat-form-field class="flex">
+                <mat-label>Page</mat-label>
+                <input matInput formControlName="pageId" />
+            </mat-form-field>
+        </div>
+        <div style="display: grid; justify-items: end">
+            <button mat-raised-button>Update</button>
+        </div>
+    </form>
+
+    <mat-divider style="margin: 16px 0" />
+
+    <div style="display: flex; flex-direction: row; gap: 6px">
+        <app-textarea
+            id="main.information"
+            label="Information"
+            [value]="values.get('main.information') ?? ''"
+            placeholder="Enter information"
+            class="flex"
+            [lock]="getMapByKey('main.information')"
+            (messageEvent)="sendNotification($event)"
+            [username]="username"
+        />
+
+        <app-textarea
+            id="main.details"
+            class="flex"
+            label="Details"
+            [value]="values.get('main.details') ?? ''"
+            [lock]="getMapByKey('main.details')"
+            (messageEvent)="sendNotification($event)"
+            [username]="username"
+        />
+    </div>
+
+    <div class="collaboration-status-bar">
+        <div class="status-wrapper flex align-center">
+            <span>Status:</span>
+            <span>{{ connectionStatus }}</span>
+            <div
+                class="status"
+                [ngClass]="{
+                    'status-connected': connectionColor === 'green',
+                    'status-reconnecting': connectionColor === 'orange',
+                    'status-disconnected': connectionColor === 'red',
+                }"
+            ></div>
+        </div>
+
+        <div class="flex align-center text-end">
+            <span style="margin-right: 12px">Last update:</span>
+            <span>{{
+                (lastUpdate | date: "dd-MM-yyyy HH:mm") ?? "never"
+            }}</span>
+        </div>
+    </div>
+</div>

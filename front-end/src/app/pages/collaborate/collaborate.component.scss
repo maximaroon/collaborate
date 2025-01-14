@@ -1,0 +1,48 @@
+.align-center {
+    align-self: center;
+}
+
+.flex {
+    flex: 1;
+}
+
+.text-end {
+    text-align: end;
+}
+
+.collaboration-status-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 97%;
+    position: absolute;
+    bottom: 0;
+    height: 64px;
+    align-content: center;
+}
+
+.status-wrapper {
+    display: flex;
+    gap: 6px;
+}
+
+.status {
+    height: 9px;
+    width: 9px;
+    border: 1px solid lightgrey;
+    border-radius: 100%;
+    margin-top: 3px;
+    display: inline-block;
+}
+
+.status-disconnected {
+    background-color: red;
+}
+
+.status-reconnecting {
+    background-color: orange;
+}
+
+.status-connected {
+    background-color: green;
+}
